@@ -30,8 +30,8 @@ private static Scanner input;
     		//Debug Sysout of array length
     		//System.out.println("arr length: " +arr.length);
     		if (newPersonString == null || arr.length < 7) {
-    			System.out.println("ERROR: Match Example And ");
-    			System.out.println("enter a Comma Space between all fields.");
+    			System.err.println("ERROR: Match Example And ");
+    			System.err.println("enter a Comma Space between all fields.");
     			break;
     		}	
             peopleArray = addRecord(arr, peopleArray);
@@ -123,7 +123,8 @@ private static Scanner input;
 					yesNo = yesNo.toLowerCase();
 					if (yesNo.contentEquals("yes") || yesNo.contentEquals("y"))  {
 						System.out.println("Enter new phone number: "); 
-						peopleArray[i].setTelephone(input.nextLine());
+						phoneNumber = checkPhoneLength(input.nextLine());
+						peopleArray[i].setTelephone(phoneNumber);
 						System.out.println("Updated telephone for: " + peopleArray[i]);
 						break;
 					}
@@ -145,7 +146,8 @@ private static Scanner input;
 					yesNo = yesNo.toLowerCase();
 					if (yesNo.contentEquals("yes") || yesNo.contentEquals("y"))  {
 						System.out.println("Enter new phone number: "); 
-						peopleArray[i].setTelephone(input.nextLine());
+						phoneNumber = checkPhoneLength(input.nextLine());
+						peopleArray[i].setTelephone(phoneNumber);
 						System.out.println("Updated telephone for: " + peopleArray[i]);
 						break;
 					}
@@ -270,7 +272,7 @@ private static Scanner input;
 			System.out.println("Bye");
 			break;
 		default:
-			System.out.println("ERROR: Enter a number 1 through 11");
+			System.err.println("ERROR: Enter a number 1 through 11");
 			break;
 		}
 	} while (!choice.equals("11"));
@@ -343,11 +345,11 @@ private static Scanner input;
 			if (phone.length() == 10) {
 				phoneGood = true;
 			} else {
-				System.out.println("ERROR bad phone number: ("
+				System.err.println("ERROR bad phone number: ("
 						+ phone.substring(0,3) + ")" 
 						+ phone.substring(3,6) + "-" 
 						+ phone.substring(6)   );
-			System.out.println("Please RE-enter 10-digit Telephone Number");
+			System.err.println("Please RE-enter 10-digit Telephone Number");
 			phone = input.nextLine();
 			}
 		} while (phoneGood == false);
