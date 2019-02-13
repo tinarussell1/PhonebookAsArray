@@ -45,6 +45,11 @@ private static Scanner input;
 				System.out.println("No one with that number");
 			}
 			for (int i=0; i<peopleArray.length; i++) {
+				
+				Person[] fixing = new Person[peopleArray.length-1];
+				//copies in current array elements until we get to the one being deleted
+				fixing[i] =peopleArray[i];
+				
 				if(peopleArray[i].getTelephone().equals(phoneNumber)) {
 					System.out.println(peopleArray[i].getFirstName() 
 							+ ", " + peopleArray[i].getLastName()
@@ -64,7 +69,7 @@ private static Scanner input;
 					int temp = i;  //not entirely needed but easier to read
 					if (yesNo.contentEquals("yes") || yesNo.contentEquals("y"))  {
 						//returns updated version of array with record matching phone deleted
-						peopleArray = deleteRecord(temp, peopleArray);
+						peopleArray = deleteRecord(temp, peopleArray, fixing);
 						System.out.println("Deleted Successfully " + deletedName);
 						break;
 					}
@@ -316,18 +321,15 @@ private static Scanner input;
 		return phone;
 	}
 	
-	public static Person[] deleteRecord(int temp, Person[] arrayToFix) {
+	public static Person[] deleteRecord(int temp, Person[] arrayToFix, Person[] fixed) {
 		//set length of new array to old array length minus 1.
-		Person[] fixed = new Person[arrayToFix.length-1];
+
 		for (int i=0; i < arrayToFix.length-1; i++) {
 			//temp is the array element to be removed.
 			if (i >= temp)  {
 				//sets the array elements after one to be deleted down by one place.
 				fixed[i] =arrayToFix[i+1];
-			} else {
-				//copies in current array elements until we get to the one being deleted
-				fixed[i] =arrayToFix[i];
-			}
+			} 
 		}
 		return fixed;
 	}
