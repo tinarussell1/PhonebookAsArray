@@ -5,8 +5,7 @@ public class Person implements Comparable<Person>  {
 	private String firstName;
 	private String lastName;
 	private String telephone;
-	private Address address ;
-	//=new Address();
+	private Address address ;  //=new Address();
 		
 	public Person() {
 	}
@@ -76,8 +75,10 @@ public class Person implements Comparable<Person>  {
 			//check phone number length of 10 before saving
 			String phone = PhonebookAsArray.checkPhoneLength(arr[2]);
 			p.setTelephone(phone);
-
-			if (originalArray[0] == null || originalArray[0].firstName.isEmpty()) {
+			
+			if (originalArray[0] == null)  {
+			//this DOES NOT work/////////    if (originalArray[0].isEmpty()) {
+			//if (originalArray[0] == null) || (originalArray[0].firstName.isEmpty()) {
 				Person[] newArray = new Person[originalArray.length];	
 
 				newArray[0] = p;	
