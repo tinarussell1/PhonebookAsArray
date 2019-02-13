@@ -1,4 +1,4 @@
-package Phonebook;
+package phonebook;
 
 import java.util.Scanner;
 import java.util.Arrays;
@@ -34,7 +34,7 @@ private static Scanner input;
     			System.err.println("enter a Comma Space between all fields.");
     			break;
     		}	
-            peopleArray = addRecord(arr, peopleArray);
+            peopleArray = Person.addRecord(arr, peopleArray);
 			break;
 		case "2":
 			//delete a record by matching phone number
@@ -297,46 +297,6 @@ private static Scanner input;
 		//Break this later
 		String choice = input.nextLine();
 		return choice;
-	}
-	
-	public static Person[] addRecord(String[] arr, Person[] originalArray) {
-		Person p = new Person();
-
- 		//first, fill a Person address from simple array	       
-   		p.getAddress().setStreet(arr[3]);
-   		p.getAddress().setCity(arr[4]);
-   		p.getAddress().setState(arr[5]);
-   		p.getAddress().setZip(arr[6]);
-   		p.setAddress(p.getAddress());
-   		p.setFirstName(arr[0]);
-   		p.setLastName(arr[1]);       		
-		//check phone number length of 10 before saving
-		String phone = checkPhoneLength(arr[2]);
-		p.setTelephone(phone);
-
-		if (originalArray[0] == null) {
-			Person[] newArray = new Person[originalArray.length];	
-
-			newArray[0] = p;	
-			System.out.println("after first in newArray");			
-			System.out.println("Successfully Added: " + newArray[0]);
-			return newArray;
-		} else {
-			Person[] newArray = new Person[originalArray.length+1];
-			
-			newArray[originalArray.length] = p;
-			System.out.println("Successfully Added: " + newArray[originalArray.length]);
-			
-			//loop thru copying in original array to new array
-			for (int i = 0; i < originalArray.length; i++)
-				newArray[i] = originalArray[i];
-			return newArray;
-		}
-	}
-	
-	private static boolean isStringEmpty(String firstName) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	public static String checkPhoneLength(String phone) {

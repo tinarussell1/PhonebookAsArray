@@ -1,4 +1,4 @@
-package Phonebook;
+package phonebook;
 
 public class Address {
 	private String street;
