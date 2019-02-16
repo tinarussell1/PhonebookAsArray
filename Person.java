@@ -77,8 +77,7 @@ public class Person implements Comparable<Person>  {
 			p.setTelephone(phone);
 			
 			if (originalArray[0] == null)  {
-			//this DOES NOT work/////////    if (originalArray[0].isEmpty()) {
-			//if (originalArray[0] == null) || (originalArray[0].firstName.isEmpty()) {
+			//Cant do isEmpty with array/// if (originalArray.isEmpty()) {
 				Person[] newArray = new Person[originalArray.length];	
 
 				newArray[0] = p;	

@@ -44,12 +44,16 @@ private static Scanner input;
 			if (peopleArray.length <1) {
 				System.out.println("No one with that number");
 			}
+			//Added new array to replace current array once person deleted.  Its
+			//here so that I only loop thru array once.
+			Person[] fixing = new Person[peopleArray.length-1];
 			for (int i=0; i<peopleArray.length; i++) {
 				
-				Person[] fixing = new Person[peopleArray.length-1];
 				//copies in current array elements until we get to the one being deleted
-				fixing[i] =peopleArray[i];
-				
+				if (i <= fixing.length-1) {
+					fixing[i] =peopleArray[i];
+				}
+				System.out.println(peopleArray[i] +", i=: " +i);
 				if(peopleArray[i].getTelephone().equals(phoneNumber)) {
 					System.out.println(peopleArray[i].getFirstName() 
 							+ ", " + peopleArray[i].getLastName()
